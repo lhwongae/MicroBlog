@@ -27,7 +27,7 @@ public class TestBlog {
 	public static void main(String[] args) {
 		
 		TestBlog testBlog = new TestBlog();
-		User user = new User(1, "COMP3021", "COMP3021@cse;8st;hk");
+		User user = new User(1, "COMP3021", "COMP3021@cse.ust.hk");
 		Blog myblog = new Blog(user);
 		String prompt = null;
 		
