@@ -81,8 +81,8 @@ public class Blog {
 		//TODO
 		String printblog = "";
 		for(int i = 0; i < allPosts.size(); i++){
-			int numofpost = i + 1; 
-			printblog = printblog + "Post[" + numofpost + "]:" + allPosts.get(i) + "\n";
+			int numOfPost = i + 1; 
+			printblog = printblog + "Post[" + numOfPost + "]:" + allPosts.get(i) + "\n";
 		}
 		return printblog;
 	}
