@@ -46,7 +46,7 @@ public class Blog {
 		allPosts.add(p);
 		
 		//TODO print a message if succeed
-		System.out.print("A new Post: \n" + p + "\n");
+		System.out.println("A new Post: \n" + p);
 	}
 	
 	/**
@@ -69,7 +69,7 @@ public class Blog {
 		if(index-1 < allPosts.size() && index > 0){
 			allPosts.remove(index-1);
 		}
-		else System.out.print("Illegal deletion \n");
+		else System.out.println("Illegal deletion");
 	}
 	
 	@Override

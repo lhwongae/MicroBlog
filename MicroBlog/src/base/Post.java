@@ -88,8 +88,6 @@ public class Post {
 		//TODO
 		//You should give hashCode a unique value?
 		//You can use the hashCode of your attributes
-		//date.hashCode();
-		//content.hashCode();
 		
 		hashCode = date.hashCode() + content.hashCode();
 		
