@@ -1,10 +1,10 @@
 package base;
 
-public class User {
+public class User implements Comparable<User> {
 
-	private int ID;
-	private String name;
-	private String email;
+	private int userId;
+	private String userName;
+	private String userEmail;
 	
 	/**
 	 * Constructor
@@ -12,22 +12,36 @@ public class User {
 	 * @param name
 	 * @param email
 	 */
-	public User(int ID, String name, String email){
+	public User(int userId, String userName, String userEmail){
 		// TODO
-		this.ID = ID;
-		this.name = name;
-		this.email = email;
+		this.userId = userId;
+		this.userName = userName;
+		this.userEmail = userEmail;
 	}
 	
 	public int getID(){
-		return ID;
+		return userId;
 	}
 	
 	public String getName(){
-		return name;
+		return userName;
 	}
 	
 	public String getEmail(){
-		return email;
+		return userEmail;
+	}
+	
+	public String toString(){
+		String user = "User [userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail + "]";
+		return user;
+	}
+	
+	@Override
+	public int compareTo(User u){
+		if(userId == u.getID())
+			return 0;
+		else if(userId > u.getID())
+			return 1;
+		else return -1;
 	}
 }

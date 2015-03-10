@@ -1,6 +1,7 @@
 package blog;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import base.*;
 
@@ -122,6 +123,23 @@ public class Blog {
 		hashCode = user.hashCode() + allPosts.hashCode();
 		
 		return hashCode;
+	}
+	
+	public void search(int month, String someone) {
+		
+		Calendar cal = Calendar.getInstance();
+		for(Post p : allPosts) {
+			cal.setTime(p.getDate());
+			int postMonth = cal.get(Calendar.MONTH);
+			if(postMonth+1 == month && p.contains("@"+someone)){
+				System.out.print(p);
+			}
+		}
+	}
+
+	public void setPosts(ArrayList<Post> allPosts) {
+		// TODO Auto-generated method stub
+		this.allPosts = allPosts;
 	}
 	
 	
