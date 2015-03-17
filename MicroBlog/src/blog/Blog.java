@@ -1,11 +1,17 @@
 package blog;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import base.*;
 
-public class Blog {
+public class Blog implements Serializable{
 	
 	/**
 	 * Constructor
@@ -140,6 +146,33 @@ public class Blog {
 	public void setPosts(ArrayList<Post> allPosts) {
 		// TODO Auto-generated method stub
 		this.allPosts = allPosts;
+	}
+	
+	public void save(String filepath){
+		try{
+			FileOutputStream fs = new FileOutputStream(filepath);
+			ObjectOutputStream os = new ObjectOutputStream(fs);
+			os.writeObject(this);
+			os.close();
+		} catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public void load(String filepath){
+		try{
+			FileInputStream fs = new FileInputStream(filepath);
+			ObjectInputStream is = new ObjectInputStream(fs);
+			Blog temp = (Blog) is.readObject();
+			setUser(temp.getUser());
+			setPosts(temp.allPosts);
+			is.close();
+			
+		} catch(FileNotFoundException e){
+			System.out.print("Wait! There is something wrong. I cannot find the file..");
+		} catch(Exception ex){
+			ex.printStackTrace();
+		}
 	}
 	
 	

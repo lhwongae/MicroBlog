@@ -16,7 +16,7 @@ public class FriendsPost extends Post{
 
 	public String toString(){
 		//TODO
-		String userinfo = "User [userId=" + friends.getID() + ", userName=" + friends.getName() + ", userEmail=" +friends.getEmail() +"]" + "\n" + super.toString();
+		String userinfo = "User [userId=" + friends.getUserId() + ", userName=" + friends.getUserName() + ", userEmail=" +friends.getUserEmail() +"]" + "\n" + super.toString();
 		return userinfo;
 	}
 
