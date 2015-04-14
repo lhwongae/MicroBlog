@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Date;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,14 +17,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import base.Post;
 import base.User;
 
 public class BlogGUI{
 	
 	private JFrame mainFrame;
 	private JLabel charLimit;
-	private JTextArea postTextArea;
-	private JTextField postContent;
+	private JTextArea postTextArea, postContent;
 	private JButton refresh;
 	private JButton post;
 	private Blog myBlog;
@@ -46,7 +47,10 @@ public class BlogGUI{
 		postTextArea.addKeyListener(new lengthListener());
 		postTextArea.setLineWrap(true);
 		postTextArea.setWrapStyleWord(true);
-		postContent = new JTextField("Here is put my posts!");
+		postContent = new JTextArea("Here is put my posts!");
+		postContent.setLineWrap(true);
+		postContent.setWrapStyleWord(true);
+		postContent.setEditable(false);
 		refresh = new JButton("refresh");
 		post = new JButton("post");
 		
@@ -67,8 +71,6 @@ public class BlogGUI{
 		p1.add(p2, BorderLayout.SOUTH);
 		
 		mainFrame.add(p1);
-		postContent.setHorizontalAlignment(postContent.CENTER);
-		postContent.setEnabled(true);
 		mainFrame.add(postContent);
 		
 		mainFrame.setVisible(true);
@@ -77,13 +79,24 @@ public class BlogGUI{
 	class postListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			String content = postTextArea.getText();
+			if(content.length() == 0 || content.length() > 140)
+				return;
+			
 			String savefilepath="C:/Users/lhwongae/workspace/A.blog";
+			Date date = new Date();
+			Post post = new Post(date, content);
+			myBlog.post(post);
+			myBlog.save(savefilepath);
+			postTextArea.setText("");
+			charLimit.setText("You can still input 140 Characters");
 		}
 	}
 	
 	class refreshListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			String loadfilepath="C:/Users/lhwongae/workspace/A.blog";
+			myBlog.load(loadfilepath);
+			postContent.setText(myBlog.toString());
 		}	
 	}
 	
