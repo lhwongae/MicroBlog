@@ -1,4 +1,4 @@
-package blog;
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 
 import base.Post;
 import base.User;
+import blog.Blog;
 
 public class BlogGUI{
 	
