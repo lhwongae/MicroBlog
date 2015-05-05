@@ -17,7 +17,7 @@ public class BlogServer {
 		) {
 			String inputLine;
 			while((inputLine = in.readLine()) != null)
-					System.out.print(inputLine);
+					System.out.println(inputLine);
 		} catch (IOException e) {
 			System.out.println("error");
 			System.out.println(e.getMessage());
